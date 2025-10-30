@@ -36,16 +36,20 @@ class HomeView extends StatelessWidget {
                       color: AppColorsLight.imagePlaceholder,
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: Image.network(
-                      'https://image.tmdb.org/t/p/w500//z7xXihu5wHuSMWymq5VAulPVuvg.jp',
-                      loadingBuilder: (context, child, loadingProgress) {
-                        if (loadingProgress == null) return child;
-                        return Center(child: CircularProgressIndicator());
-                      },
-                      errorBuilder: (context, error, stackTrace) {
-                        return Icon(Icons.image_not_supported);
-                      },
-                      fit: BoxFit.contain,
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: Image.network(
+                        'https://image.tmdb.org/t/p/w500//z7xXihu5wHuSMWymq5VAulPVuvg.jpg',
+
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) return child;
+                          return Center(child: CircularProgressIndicator());
+                        },
+                        errorBuilder: (context, error, stackTrace) {
+                          return Icon(Icons.image_not_supported);
+                        },
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                   const SizedBox(width: 16),
