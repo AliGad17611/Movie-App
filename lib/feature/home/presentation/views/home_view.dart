@@ -1,10 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/core/theme/cubit/theme_cubit.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: Center(child: Text('Home View')));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home View'),
+        actions: [
+          IconButton(
+            onPressed: () {
+              context.read<ThemeCubit>().toggleTheme();
+            },
+            icon: Icon(Icons.dark_mode),
+          ),
+        ],
+      ),
+      body: Center(child: Text('Home View')),
+    );
   }
 }
