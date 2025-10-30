@@ -5,6 +5,8 @@ import 'package:movie_app/feature/home/presentation/views/home_view.dart';
 
 class AppRoutes {
   const AppRoutes._();
+  static const AppRoutes instance = AppRoutes._();
+  
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.home:
