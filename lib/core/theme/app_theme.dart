@@ -20,8 +20,13 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColorsLight.cardBackground,
         elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UiConstants.cardRadius)),
-        margin: EdgeInsets.symmetric(horizontal: UiConstants.horizontalPadding, vertical: UiConstants.verticalPadding),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(UiConstants.cardRadius),
+        ),
+        margin: EdgeInsets.symmetric(
+          horizontal: UiConstants.horizontalPadding,
+          vertical: UiConstants.verticalPadding,
+        ),
       ),
       textTheme: TextTheme(
         headlineLarge: AppTextStylesLight.movieTitleLarge,
@@ -39,7 +44,7 @@ class AppTheme {
       primaryColor: AppColorsDark.primaryCyan,
       scaffoldBackgroundColor: AppColorsDark.darkBackground,
       appBarTheme: AppBarTheme(
-        backgroundColor: AppColorsDark.darkBackground,
+        backgroundColor: AppColorsDark.appBarBackground,
         elevation: 0,
         centerTitle: true,
         titleTextStyle: AppTextStylesDark.appBarTitle,
@@ -48,8 +53,13 @@ class AppTheme {
       cardTheme: CardThemeData(
         color: AppColorsDark.cardBackground,
         elevation: 2,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(UiConstants.cardRadius)),
-        margin: EdgeInsets.symmetric(horizontal: UiConstants.horizontalPadding, vertical: UiConstants.verticalPadding),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(UiConstants.cardRadius),
+        ),
+        margin: EdgeInsets.symmetric(
+          horizontal: UiConstants.horizontalPadding,
+          vertical: UiConstants.verticalPadding,
+        ),
       ),
       textTheme: TextTheme(
         headlineLarge: AppTextStylesDark.movieTitleLarge,
