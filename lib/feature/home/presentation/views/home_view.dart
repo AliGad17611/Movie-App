@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/core/theme/cubit/theme_cubit.dart';
+import 'package:movie_app/core/theme/extentions/theme_extension.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,7 +16,7 @@ class HomeView extends StatelessWidget {
             onPressed: () {
               context.read<ThemeCubit>().toggleTheme();
             },
-            icon: Icon(Icons.dark_mode),
+            icon: Icon(context.isDark ? Icons.light_mode : Icons.dark_mode),
           ),
         ],
       ),
