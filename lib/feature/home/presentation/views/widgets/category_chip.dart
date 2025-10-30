@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:movie_app/core/constants/ui_constants.dart';
 import 'package:movie_app/core/theme/extentions/theme_extension.dart';
 
 class CategoryChip extends StatelessWidget {
@@ -8,13 +10,13 @@ class CategoryChip extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+      padding:  EdgeInsets.symmetric(horizontal: 12.w, vertical: 4.h),
       decoration: BoxDecoration(
         color: context.extraColors.categoryChipBackground,
         border: Border.all(color: Colors.grey.shade400),
-        borderRadius: BorderRadius.circular(8),
+        borderRadius: BorderRadius.circular(UiConstants.imageCardBorderRadius),
       ),
-      child: Text(label, style: const TextStyle(fontSize: 13)),
+      child: Text(label, style: context.theme.textTheme.bodyMedium),
     );
   }
 }
