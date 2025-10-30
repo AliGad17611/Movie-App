@@ -22,6 +22,7 @@ class HomeView extends StatelessWidget {
         ],
       ),
       body: ListView.builder(
+        itemCount: 10,
         itemBuilder: (context, index) {
           return MovieCard();
         },
