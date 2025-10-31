@@ -86,11 +86,14 @@ class _HomeViewBodyState extends State<HomeViewBody> {
               if (state.isLoadingMore)
                 const Center(child: LinearProgressIndicator()),
               Expanded(
-                child: ListView.builder(
-                  controller: _scrollController,
-                  itemCount: state.movies.length,
-                  itemBuilder: (context, index) =>
-                      MovieCard(movie: state.movies[index]),
+                child: RefreshIndicator(
+                  onRefresh: () => context.read<HomeCubit>().refreshMovies(),
+                  child: ListView.builder(
+                    controller: _scrollController,
+                    itemCount: state.movies.length,
+                    itemBuilder: (context, index) =>
+                        MovieCard(movie: state.movies[index]),
+                  ),
                 ),
               ),
             ],

@@ -16,8 +16,6 @@ class HomeCubit extends Cubit<HomeState> {
 
   Future<void> getPopularMovies() async {
     emit(HomeLoading());
-    _resetPagination();
-
     final result = await homeRepo.getPopularMovies();
     result.fold((error) => emit(HomeError(apiErrorModel: error)), (response) {
       _movies = response.results;
@@ -51,6 +49,17 @@ class HomeCubit extends Cubit<HomeState> {
         );
       },
     );
+  }
+
+  Future<void> refreshMovies() async {
+    emit(HomeLoading());
+    _resetPagination();
+    final result = await homeRepo.getPopularMovies();
+    result.fold((error) => emit(HomeError(apiErrorModel: error)), (response) {
+      _movies = response.results;
+      _hasReachedMax = PaginationConstants.pageNumber >= response.totalPages;
+      emit(HomeLoaded(movies: _movies, hasReachedMax: _hasReachedMax));
+    });
   }
 
   void _resetPagination() {
