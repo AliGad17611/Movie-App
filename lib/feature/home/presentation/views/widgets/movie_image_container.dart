@@ -3,9 +3,8 @@ import 'package:movie_app/core/constants/ui_constants.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 
 class MovieImageContainer extends StatelessWidget {
-  const MovieImageContainer({
-    super.key,
-  });
+  const MovieImageContainer({super.key, required this.posterPath});
+  final String posterPath;
 
   @override
   Widget build(BuildContext context) {
@@ -19,8 +18,8 @@ class MovieImageContainer extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(UiConstants.imageCardBorderRadius),
         child: Image.network(
-          'https://image.tmdb.org/t/p/w500//z7xXihu5wHuSMWymq5VAulPVuvg.jpg',
-        
+          'https://image.tmdb.org/t/p/w500/$posterPath',
+
           loadingBuilder: (context, child, loadingProgress) {
             if (loadingProgress == null) return child;
             return Center(child: CircularProgressIndicator());

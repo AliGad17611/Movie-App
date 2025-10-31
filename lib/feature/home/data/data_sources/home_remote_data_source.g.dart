@@ -21,7 +21,7 @@ class _HomeRemoteDataSource implements HomeRemoteDataSource {
 
   @override
   Future<PopularMoviesResponseModel> getPopularMovies({
-    int page = PaginationConstants.pageNumber,
+    int page = 1,
     String language = 'en-US',
   }) async {
     final _extra = <String, dynamic>{};

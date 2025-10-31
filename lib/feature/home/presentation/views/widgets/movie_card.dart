@@ -7,15 +7,17 @@ import 'package:movie_app/core/theme/extentions/theme_extension.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 import 'package:movie_app/feature/home/presentation/views/widgets/category_chip.dart';
 import 'package:movie_app/feature/home/presentation/views/widgets/movie_image_container.dart';
+import 'package:movie_app/feature/home/data/model/movie_model.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key});
+  const MovieCard({super.key, required this.movie});
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.movieDetails, arguments: 'movie');
+        Navigator.pushNamed(context, Routes.movieDetails, arguments: movie.id);
       },
       child: Card(
         child: Padding(
@@ -25,12 +27,12 @@ class MovieCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              MovieImageContainer(),
+              MovieImageContainer(posterPath: movie.posterPath),
               horizontalSpace(16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Movie ', style: context.theme.textTheme.titleMedium),
+                  Text(movie.title, style: context.theme.textTheme.titleMedium),
                   verticalSpace(4),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -41,11 +43,11 @@ class MovieCard extends StatelessWidget {
                         size: 18.sp,
                       ),
                       horizontalSpace(4),
-                      Text('8.5/10', style: context.theme.textTheme.bodyMedium),
+                      Text(movie.voteAverage.toString(), style: context.theme.textTheme.bodyMedium),
                     ],
                   ),
                   verticalSpace(8),
-                  CategoryChip(label: 'Action'),
+                  CategoryChip(label: movie.originalLanguage),
                 ],
               ),
               Spacer(),
