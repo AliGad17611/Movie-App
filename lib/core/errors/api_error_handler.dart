@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/config/logger/app_logger.dart';
+import 'package:movie_app/core/logger/app_logger.dart';
 import 'package:movie_app/core/errors/api_error_factory.dart';
 import 'package:movie_app/core/errors/api_error_model.dart';
 import 'package:movie_app/core/errors/dio_exception_type_extention.dart';

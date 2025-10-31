@@ -1,17 +1,33 @@
-class MovieModel {
+import 'package:hive/hive.dart';
+
+part 'movie_model.g.dart';
+
+@HiveType(typeId: 0)
+class MovieModel extends HiveObject {
+  @HiveField(0)
   final int id;
+  @HiveField(1)
   final String originalLanguage;
+  @HiveField(2)
   final String originalTitle;
+  @HiveField(3)
   final String overview;
+  @HiveField(4)
   final double popularity;
+  @HiveField(5)
   final String posterPath;
+  @HiveField(6)
   final String releaseDate;
+  @HiveField(7)
   final String title;
+  @HiveField(8)
   final bool video;
+  @HiveField(9)
   final double voteAverage;
+  @HiveField(10)
   final int voteCount;
 
-  const MovieModel({
+  MovieModel({
     required this.id,
     required this.originalLanguage,
     required this.originalTitle,

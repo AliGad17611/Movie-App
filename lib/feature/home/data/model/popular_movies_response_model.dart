@@ -1,12 +1,20 @@
+import 'package:hive/hive.dart';
 import 'movie_model.dart';
 
-class PopularMoviesResponseModel {
+part 'popular_movies_response_model.g.dart';
+
+@HiveType(typeId: 1)
+class PopularMoviesResponseModel extends HiveObject {
+  @HiveField(0)
   final int page;
+  @HiveField(1)
   final List<MovieModel> results;
+  @HiveField(2)
   final int totalPages;
+  @HiveField(3)
   final int totalResults;
 
-  const PopularMoviesResponseModel({
+  PopularMoviesResponseModel({
     required this.page,
     required this.results,
     required this.totalPages,
