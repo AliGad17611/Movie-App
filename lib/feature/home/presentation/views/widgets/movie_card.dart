@@ -32,7 +32,15 @@ class MovieCard extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(movie.title, style: context.theme.textTheme.titleMedium),
+                  SizedBox(
+                    width: 200.w,
+                    child: Text(
+                      movie.title,
+                      style: context.theme.textTheme.titleMedium,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                    ),
+                  ),
                   verticalSpace(4),
                   Row(
                     mainAxisSize: MainAxisSize.min,
@@ -43,7 +51,10 @@ class MovieCard extends StatelessWidget {
                         size: 18.sp,
                       ),
                       horizontalSpace(4),
-                      Text(movie.voteAverage.toString(), style: context.theme.textTheme.bodyMedium),
+                      Text(
+                        "${movie.voteAverage.toStringAsFixed(1)}/10",
+                        style: context.theme.textTheme.bodyMedium,
+                      ),
                     ],
                   ),
                   verticalSpace(8),
