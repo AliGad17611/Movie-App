@@ -31,8 +31,44 @@ class HomeView extends StatelessWidget {
   }
 }
 
-class HomeViewBody extends StatelessWidget {
+class HomeViewBody extends StatefulWidget {
   const HomeViewBody({super.key});
+
+  @override
+  State<HomeViewBody> createState() => _HomeViewBodyState();
+}
+
+class _HomeViewBodyState extends State<HomeViewBody> {
+  final ScrollController _scrollController = ScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    _scrollController.addListener(_onScroll);
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    final state = context.read<HomeCubit>().state;
+    if (_isBottom &&
+        state is HomeLoaded &&
+        !state.isLoadingMore &&
+        !state.hasReachedMax) {
+      context.read<HomeCubit>().loadMoreMovies();
+    }
+  }
+
+  bool get _isBottom {
+    if (!_scrollController.hasClients) return false;
+    final maxScroll = _scrollController.position.maxScrollExtent;
+    final currentScroll = _scrollController.position.pixels;
+    return currentScroll >= (maxScroll * 0.9); // Load more when 90% scrolled
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +81,19 @@ class HomeViewBody extends StatelessWidget {
           return Center(child: Text(state.apiErrorModel.message));
         }
         if (state is HomeLoaded) {
-          return ListView.builder(
-            itemCount: state.popularMoviesResponseModel.results.length,
-            itemBuilder: (context, index) {
-              return MovieCard(
-                movie: state.popularMoviesResponseModel.results[index],
-              );
-            },
+          return Column(
+            children: [
+              if (state.isLoadingMore)
+                const Center(child: LinearProgressIndicator()),
+              Expanded(
+                child: ListView.builder(
+                  controller: _scrollController,
+                  itemCount: state.movies.length,
+                  itemBuilder: (context, index) =>
+                      MovieCard(movie: state.movies[index]),
+                ),
+              ),
+            ],
           );
         }
         return const SizedBox.shrink();
