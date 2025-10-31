@@ -11,7 +11,8 @@ class DioFactory {
       ..baseUrl = ApiConstants.baseUrl
       ..connectTimeout = Duration(milliseconds: ApiConstants.connectionTimeout)
       ..receiveTimeout = Duration(milliseconds: ApiConstants.receiveTimeout)
-      ..sendTimeout = Duration(milliseconds: ApiConstants.sendTimeout);
+      ..sendTimeout = Duration(milliseconds: ApiConstants.sendTimeout)
+      ..headers['Authorization'] = ApiConstants.apiToken;
     _dio.interceptors.add(
       PrettyDioLogger(
         requestHeader: true,
