@@ -4,14 +4,16 @@ import 'package:movie_app/core/constants/ui_constants.dart';
 import 'package:movie_app/core/utils/app_colors.dart';
 
 class MovieImageContainer extends StatelessWidget {
-  const MovieImageContainer({super.key, required this.posterPath});
+  const MovieImageContainer({super.key, required this.posterPath,  required this.width, required this.height});
   final String posterPath;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: UiConstants.imageCardWidth,
-      height: UiConstants.imageCardHeight,
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         color: AppColorsLight.imagePlaceholder,
         borderRadius: BorderRadius.circular(UiConstants.imageCardRadius),
