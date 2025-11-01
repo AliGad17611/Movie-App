@@ -16,7 +16,7 @@ A modern, feature-rich Flutter application for browsing popular movies using The
 
 ## 🏗️ Architecture Overview
 
-This app follows **Clean Architecture** principles with a **Feature-based** structure, ensuring scalability, testability, and maintainability.
+This app follows **Layered Architecture** principles with a **Feature-based** structure, ensuring scalability, testability, and maintainability. The architecture focuses on clear separation of concerns between Presentation and Data layers, with repositories acting as the boundary between UI and data access.
 
 ### Project Structure
 
@@ -36,8 +36,7 @@ lib/
 ├── feature/                       # Feature-based modules
 │   ├── home/                      # Home feature (movie listing)
 │   │   ├── data/                  # Data layer
-│   │   ├── presentation/          # Presentation layer
-│   │   └── domain/                # Domain layer (if needed)
+│   │   └── presentation/          # Presentation layer
 │   └── details/                   # Movie details feature
 ├── main.dart                      # App entry point
 └── movie_app.dart                 # Root widget
@@ -52,11 +51,6 @@ graph TB
         BLOC[BLoC/Cubit]
     end
 
-    subgraph "Domain Layer"
-        UC[Use Cases]
-        ENT[Entities]
-    end
-
     subgraph "Data Layer"
         REP[Repository]
         RDS[Remote Data Source]
@@ -69,8 +63,7 @@ graph TB
     end
 
     UI --> BLOC
-    BLOC --> UC
-    UC --> REP
+    BLOC --> REP
     REP --> RDS
     REP --> LDS
     RDS --> API
@@ -78,7 +71,6 @@ graph TB
 
     style UI fill:#e1f5fe
     style BLOC fill:#f3e5f5
-    style UC fill:#e8f5e8
     style REP fill:#fff3e0
     style RDS fill:#ffebee
     style LDS fill:#e0f2f1
