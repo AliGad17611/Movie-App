@@ -2,6 +2,10 @@
 
 A modern, feature-rich Flutter application for browsing popular movies using The Movie Database (TMDB) API. Built with Clean Architecture principles and state-of-the-art Flutter development practices.
 
+## 🎥 Demo
+
+Watch the app demo: [Movie App Demo](https://drive.google.com/file/d/1Jm7FCTChuMZef7O0PYs0HOnsNVILSiiO/view?usp=sharing)
+
 ## 🚀 Features
 
 - **Popular Movies Browsing**: Infinite scroll through TMDB's popular movies
