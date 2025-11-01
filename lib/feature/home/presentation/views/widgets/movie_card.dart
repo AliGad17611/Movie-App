@@ -17,7 +17,7 @@ class MovieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.pushNamed(context, Routes.movieDetails, arguments: movie.id);
+        Navigator.pushNamed(context, Routes.movieDetails, arguments: movie);
       },
       child: Card(
         child: Padding(
@@ -27,7 +27,11 @@ class MovieCard extends StatelessWidget {
           ),
           child: Row(
             children: [
-              MovieImageContainer(posterPath: movie.posterPath),
+              MovieImageContainer(
+                posterPath: movie.posterPath,
+                width: UiConstants.imageCardWidth,
+                height: UiConstants.imageCardHeight,
+              ),
               horizontalSpace(16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
